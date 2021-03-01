@@ -43,7 +43,7 @@ class Field {
   // method to check user direction input.
   userInput() {
     this.print();
-    let userInput = prompt('What next?');
+    let userInput = prompt('Where to next?').toLowerCase();
     switch (userInput) {
         case "u":
           this._verPos -= 1;
@@ -58,6 +58,7 @@ class Field {
           this._horPos += 1;
           break;
       default:
+        console.log("**Wrong key input!!** \n Please use 'r' -> move right \n Please use 'u' -> move up \n Please use 'l' -> move left \n Please use 'd' -> move down");
         break;
       }
       return this.winLoseTest();
@@ -66,7 +67,7 @@ class Field {
   // method to call the game to start
   play() {
     this.setPlayerAndHatRandom();
-    while(this.userInput() === false) {
+    while(this.userInput() === false) { 
     }
   }
 
@@ -74,7 +75,6 @@ class Field {
   static generateField(height, length) {
     const newField = [];
     for ( let i = 0 ; i < height ; i++) {
-      let rand = Math.random()*10
       if(Math.random()*10 <= 7.5 ) {
         newField.push([fieldCharacter]);
       } else {
